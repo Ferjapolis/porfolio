@@ -1,22 +1,41 @@
-<!-- ProfileCard.vue -->
 <template>
-  <div class="h-80 bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-    <img class="rounded-t-lg object-cover w-full  h-30 md:h-auto " :src="image" :alt="title" />
-    <div class="p-3 h-20">
-      <h3 class="mb-2 text-2xs font-bold tracking-tight text-gray-900 dark:text-white">{{ title }}</h3>
-      <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">{{ position }}</p>
-      <div>
-        <IconWrapper v-for="tech in tags" :name="tech" :key="tech"/>
+  <div class="flex flex-col rounded-lg shadow-lg bg-indigo-900">
+    <div class="relative group h-44 w-full overflow-hidden rounded-t-lg">
+      <!-- Imagen de fondo -->
+      <img :src="image" :alt="title"
+        class="absolute inset-0 w-full h-full object-cover transition-all duration-300 ease-in-out group-hover:scale-110 group-hover:brightness-50" />
+
+      <!-- Contenido superpuesto -->
+      <div class="absolute inset-0 flex flex-col justify-end p-6 bg-gradient-to-t from-black/60 to-transparent">
+        <!-- Contenido que aparece con fade-up -->
+        <div
+          class="transform translate-y-8 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
+          <p class="text-sm text-gray-300 mb-2">{{ position }}</p>
+          <p class="text-sm text-gray-300 mb-4">{{ description }}</p>
+
+          <!-- Iconos de tecnologías -->
+          <div class="flex flex-wrap gap-2 mb-4">
+            <IconWrapper v-for="tech in tags" :name="tech" :key="tech" class="w-6 h-6 text-white" />
+          </div>
+
+        </div>
       </div>
-      <a :href="github" v-if="github"
-        class="inline-flex items-center mr-2 px-2 py-1 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-        <IconWrapper name="GitHub" />
-        Repo
-      </a>
-      <a :href="link" v-if="link"
-        class="inline-flex items-center px-2 py-1 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-        Ir
-      </a>
+    </div>
+    <div class="py-3 px-4">
+      <!-- Título siempre visible -->
+      <h3 class="text-xl font-bold text-white mb-2">{{ title }}</h3>
+      <!-- Botones de acción -->
+      <div class="flex gap-2">
+        <a v-if="github" :href="github"
+          class="inline-flex items-center px-3 py-1 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 transition-colors duration-200">
+          <IconWrapper name="GitHub" class="w-4 h-4 mr-1" />
+          Repo
+        </a>
+        <a v-if="link" :href="link"
+          class="inline-flex items-center px-3 py-1 text-sm font-medium text-white bg-green-600 rounded-lg hover:bg-green-700 transition-colors duration-200">
+          Ir
+        </a>
+      </div>
     </div>
   </div>
 </template>
@@ -55,7 +74,8 @@ export default {
     },
     tags: {
       type: Array,
-      required: false
+      required: false,
+      default: () => []
     }
   }
 }
