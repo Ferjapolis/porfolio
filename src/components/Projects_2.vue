@@ -1,18 +1,6 @@
 <!-- ProfileGallery.vue -->
 <template>
-  <div>
-    <div class="flex justify-center space-x-4 mb-8">
-      <button v-for="category in categories" :key="category" @click="setActiveFilter(category)" :class="[
-        'px-4 py-2 rounded-full transition-colors',
-        activeFilter === category
-          ? 'bg-blue-500 text-white'
-          : 'bg-gray-200 text-gray-700 hover:bg-blue-600 hover:text-white'
-      ]">
-        {{ capitalize(category) }}
-      </button>
-    </div>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-
       <ProjectCard v-for="(profile, p) in filteredProfiles" 
       :key="p" 
       :title="profile.name"        
@@ -22,10 +10,7 @@
       :github="profile.github" 
       :tags="profile.tags" 
       :link="profile.link" />
-
     </div>
-
-  </div>
 </template>
 
 <script>
