@@ -1,0 +1,55 @@
+---
+{ Astro.props }
+import HTMLIcon from "../icons/HTML.astro";
+import CSSIcon from "../icons/CSS.astro";
+import PYTHONIcon from "../icons/Python.astro";
+import VuejsIcon from "../icons/Vuejs.astro";
+import VuetifyIcon from "../icons/Vuetify.astro";
+import PlotlyIcon from "../icons/Plotly.astro";
+import RaspberryIcon from "../icons/Raspberry.astro";
+import GithubIcon from "../icons/Github.astro";
+
+const TAGS = {
+  HTML: {
+    name: "HTML",
+    class: "bg-black text-white",
+    icon: HTMLIcon
+  },
+  VUEJS: {
+    name: "VueJS",
+    class: "bg-black text-white",
+    icon: VuejsIcon
+  },
+  CSS: {
+    name: "CSS",
+    class: "bg-black text-white",
+    icon: CSSIcon
+  },
+  PYTHON: {
+    name: "Python",
+    class: "bg-black text-white",
+    icon: PYTHONIcon
+  },
+  VUETIFY: {
+    name: "Vuetify",
+    class: "bg-black text-white",
+    icon: VuetifyIcon
+  },
+  PLOTLY: {
+    name: "Plotly",
+    class: "bg-black text-white",
+    icon: PlotlyIcon
+  },
+  RPIO: {
+    name: "Raspberry",
+    class: "bg-black text-white",
+    icon: RaspberryIcon
+  },
+  GITHUB: {
+    name: "Github",
+    class: "bg-black text-white",
+    icon: GithubIcon
+  }
+};
+---
+<slot />

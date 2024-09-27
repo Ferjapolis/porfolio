@@ -1,0 +1,36 @@
+---
+import ExperienceItem from "../components/ExperienceItem.astro";
+const EXPERIENCE = [
+  {
+    date: "Actualmente...",
+    active: true,
+    company: "CFP401",
+    title: "Instructor",
+    description: `El curso brinda formación integral en programación, cubriendo desde lo básico hasta lo avanzado, para preparar a los estudiantes para carreras en desarrollo de software.`,
+  },
+  {
+    date: "Junio 2024",
+    company: "Bayer Crop Science",
+    active: false,
+    title: "Analista de Datos",
+    description: `Responsable del análisis y visualización de datos para optimización de procesos empresariales. Mejora de un 25% en la toma de decisiones basadas en datos. Implementación de tableros interactivos y procesos ETL en más de 10 departamentos, incluyendo producción y contabilidad.`,
+  },
+  {
+    active: false,
+    date: "Octubre 2018",
+    company: "Nucleoelectrica Argentina S.A",
+    title: "Administrativo",
+    description: `Responsable del desarrollo de software y gestión de documentación en Nucleoeléctrica Argentina S.A. Mejora de un 40% en la eficiencia de procesos documentales. Implementación de sistemas de control de calidad y herramientas de ingeniería en 2 divisiones clave, impactando positivamente en la gestión de proyectos y la calidad del software.`,
+  },
+];
+---
+
+<ol class="relative mt-16">
+  {
+    EXPERIENCE.map((experience) => (
+      <li class="">
+        <ExperienceItem {...experience} />
+      </li>
+    ))
+  }
+</ol>

@@ -1,0 +1,137 @@
+---
+import LinkButton from "../components/LinkButton.astro"
+import GitHub from "../icons/Github.astro"
+import Link from "../icons/Link.astro"
+import HTML from "../icons/HTML.astro";
+import CSS from "../icons/CSS.astro";
+import PYTHON from "../icons/Python.astro";
+import Vuejs from "../icons/Vuejs.astro";
+import Vuetify from "../icons/Vuetify.astro";
+import Plotly from "../icons/Plotly.astro";
+import Raspberry from "../icons/Raspberry.astro";
+
+const TAGS = {
+  VUE: {
+    name: "Vue.js",
+    class: "bg-black text-white",
+    icon: Vuejs,
+  },
+  PYTHON: {
+    name: "Python",
+    class: "bg-black text-white",
+    icon: PYTHON,
+  },
+  HTML: {
+    name: "HTML",
+    class: "bg-[#003159] text-white",
+    icon: HTML,
+  },
+  RPIO: {
+    name: "Raspberry",
+    class: "bg-black text-white",
+    icon: Raspberry,
+  },
+  CSS: {
+    name: "CSS",
+    class: "bg-[#003159] text-white",
+    icon: CSS,
+  },
+  VUETIFY: {
+    name: "Vuetify",
+    class: "bg-[#003159] text-white",
+    icon: Vuetify,
+  },
+  PLOTLY: {
+    name: "Plotly",
+    class: "bg-black text-white",
+    icon: Plotly,
+  }
+}
+const PROJECTS = [
+{
+    title: "Ferreteando - Ordenando tus venta en dos click",
+    description: `simplifica la gestión de ventas y presupuestos en ferreterías y pequeños comercios. Permite actualizar precios en tiempo real y generar presupuestos rápidamente. Su interfaz intuitiva y automatización optimizan el flujo de trabajo.`,
+    image: "/628_1x_shots_so.webp",
+    tags: [TAGS.HTML, TAGS.CSS, TAGS.VUETIFY, TAGS.VUE, TAGS.PYTHON],
+  },
+  {
+    title: "PoroIA - ML para el Éxito en el Mundo de League of Legends",
+    description: `PoroIA analiza partidas clasificatorias de League of Legends en nivel Diamante, centradas en los primeros 10 minutos. Con 10,000 partidas, ofrece información para mejorar rendimiento y estrategias. Es ideal para equipos que buscan optimización.`,
+    link: "https://ferjapolis.github.io/Coderhouser-DS-TP0002/Resumen.html",
+    github: "https://github.com/Ferjapolis/Coderhouser-DS-TP0002",
+    image: "/LoL.webp",
+    tags: [TAGS.PYTHON, TAGS.PLOTLY],
+  },
+  {
+    title: "Sistema de Vivero Automatizado con Raspberry Pi",
+    description: `El proyecto automatiza el riego y monitoreo de un vivero con sensores de humedad, temperatura, presión y pH, gestionado desde una web en Flask. Los datos se registran para análisis predictivos que optimizan el cuidado de las plantas.`,
+    image: "/342shots_so.webp",
+    tags: [TAGS.PYTHON, TAGS.PLOTLY, TAGS.RPIO],
+  },
+  {
+    title: "Generador de Metadata a partir de tablas exceles",
+    description: `El script original se encarga de leer un archivo de Excel de entrada, procesar los datos de los distintos sheets (o "tablas") del archivo y generar un archivo de salida en formato Parquet con información sobre las relaciones de datos entre las tablas.`,
+    image: "/342shots_so.webp",
+    tags: [TAGS.PYTHON ],
+  },
+  
+
+]
+---
+
+<div class="flex flex-col gap-y-16">
+  {
+    PROJECTS.map(({ image, title, description, tags, link, github }) => (
+    <article class="flex flex-col space-x-0 space-y-8 group md:flex-row md:space-x-8 md:space-y-0">
+  <div class="w-full md:w-1/2">
+    <div class="relative flex flex-col items-center col-span-6 row-span-5 gap-8 transition duration-500 ease-in-out transform shadow-xl overflow-clip rounded-xl sm:rounded-xl md:group-hover:-translate-y-1 md:group-hover:shadow-2xl lg:border lg:border-gray-800 lg:hover:border-gray-700 lg:hover:bg-gray-800/50">
+      <img 
+        alt={title}
+        class="object-cover object-top w-full h-56 transition duration-500 sm:h-full md:scale-110 md:group-hover:scale-105" 
+        loading="lazy" 
+        src={image} />
+    </div>
+  </div>
+
+  <div class="w-full md:w-1/2 md:max-w-lg">
+    <h3 class="text-2xl font-bold text-gray-800 dark:text-gray-100">
+      {title}
+    </h3>
+    <div class="flex flex-wrap mt-2">
+      <ul class="flex flex-row mb-2 gap-x-2">
+          {tags.map((tag) => (
+            <li>
+              <span
+                class={`flex gap-x-2 rounded-full text-xs ${tag.class} py-1 px-2 `}
+              >
+                <tag.icon class="size-4" />
+                {tag.name}
+              </span>
+            </li>
+          ))}
+        </ul>
+
+      <div class="mt-2 text-gray-700 dark:text-gray-400">{description}</div>
+      <footer class="flex items-end justify-start mt-4 gap-x-4">
+          {github && (
+            <LinkButton href={github}>
+              <GitHub class="size-6" />
+              Code
+              
+            </LinkButton>
+          )}
+          {link && (
+            <LinkButton href={link}>
+              <Link class="size-4" />
+              Preview
+            </LinkButton>
+          ) }
+        </footer>
+    </div>
+  </div>
+</article>
+    ))
+  }
+</div>
+
+
