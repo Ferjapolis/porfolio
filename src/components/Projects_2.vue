@@ -1,16 +1,22 @@
 <!-- ProfileGallery.vue -->
 <template>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      <ProjectCard v-for="(profile, p) in filteredProfiles" 
-      :key="p" 
-      :title="profile.name"        
-      :position="profile.position" 
-      :description="profile.description" 
-      :image="profile.image"        
-      :github="profile.github" 
-      :tags="profile.tags" 
-      :link="profile.link" />
+  <div class="pb-3 flex">
+    <div v-for="category in categories" :key="category">
+      <span class="ml-3 inline-flex items-center gap-x-1.5 py-1.5 px-3 rounded-lg text-xs font-medium bg-blue-100 text-white-400 dark:bg-blue-800/30 dark:text-white-500">
+        {{ category }}
+      </span>
     </div>
+  </div>
+  <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-10 lg:mb-14">
+    <ProjectCard v-for="(profile, p) in filteredProfiles" :key="p" 
+      :title="profile.name" 
+      :category="profile.category"      
+      :description="profile.description" 
+      :image="profile.image" 
+      :github="profile.github" 
+      :tags="profile.tags"    
+      :link="profile.link" />
+  </div>
 </template>
 
 <script>
@@ -49,7 +55,7 @@ export default {
         },
         {
           name: "Generador de Metadata a partir de tablas exceles",
-          category: "ETL",
+          category: "Tools",
           description: `El script original se encarga de leer un archivo de Excel de entrada, procesar los datos de los distintos sheets (o "tablas") del archivo y generar un archivo de salida en formato Parquet con información sobre las relaciones de datos entre las tablas.`,
           image: "/logo.png",
           github: "https://github.com/Ferjapolis/Metadata_creator",
