@@ -6,6 +6,7 @@ import Hero from "../components/Hero.astro"
 import AboutMe from "../components/AboutMe.astro"
 import Experience from "../components/Experience.astro";
 import Projects from "../components/Projects_2.vue";
+import Certification from "../components/Certification.astro";
 import TitleSection from "../components/TitleSection.astro"
 
 
@@ -41,6 +42,14 @@ import CodeIcon from "../icons/Code.astro";
         Proyectos
       </TitleSection>
       <Projects client:load />
+    </SectionContainer>
+
+    <SectionContainer id="certificaciones">
+      <TitleSection>
+        <CodeIcon class="size-7" />
+        Certificados
+      </TitleSection>
+      <Certification client:load />
     </SectionContainer>
 
     <SectionContainer id="sobre-mi">

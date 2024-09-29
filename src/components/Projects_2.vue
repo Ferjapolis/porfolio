@@ -1,12 +1,15 @@
 <!-- ProfileGallery.vue -->
 <template>
-  <div class="pb-3 flex">
-    <div v-for="category in categories" :key="category">
-      <span class="ml-3 inline-flex items-center gap-x-1.5 py-1.5 px-3 rounded-lg text-xs font-medium bg-blue-100 text-white-400 dark:bg-blue-800/30 dark:text-white-500">
-        {{ category }}
-      </span>
+
+  <!--
+    <div class="pb-3 flex">
+      <div v-for="category in categories" :key="category">
+        <span class="ml-3 inline-flex items-center gap-x-1.5 py-1.5 px-3 rounded-lg text-xs font-medium bg-blue-100 text-white-400 dark:bg-blue-800/30 dark:text-white-500">
+          {{ category }}
+        </span>
+      </div>
     </div>
-  </div>
+    -->
   <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-10 lg:mb-14">
     <ProjectCard v-for="(profile, p) in filteredProfiles" :key="p" 
       :title="profile.name" 
@@ -57,13 +60,22 @@ export default {
           name: "Generador de Metadata a partir de tablas exceles",
           category: "Tools",
           description: `El script original se encarga de leer un archivo de Excel de entrada, procesar los datos de los distintos sheets (o "tablas") del archivo y generar un archivo de salida en formato Parquet con información sobre las relaciones de datos entre las tablas.`,
-          image: "/logo.png",
+          image: "/logo.webp",
           github: "https://github.com/Ferjapolis/Metadata_creator",
           tags: ["PYTHON"],
         },
+        {
+          name: "Análisis de Timeboxing personal",
+          category: "DA",
+          description: `Planificar por adelantado cuánto tiempo se dedicará a una tarea permite organizar conscientemente cómo se utilizará el tiempo y en qué se trabajará, reduciendo los tiempos muertos y las distracciones. Esto es crucial, ya que actividades secundarias pueden consumir hasta el 60 % de nuestro tiempo.`,
+          image: "/Timeboxing.webp",
+          github: "https://colab.research.google.com/drive/17I1ubbA1fLxvgQCDKRZEnscBhU870oDp?usp=sharing",
+          tags: ["PYTHON"],
+        },
+        
         // Add more profile objects as needed
       ],
-      categories: ["all", "development", "design", "marketing"]
+      categories: ["all", "CRM", "ML", "Sistem Domotic", "DA" ,"Tools"]
     }
   },
   computed: {
